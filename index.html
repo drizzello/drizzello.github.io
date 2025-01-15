@@ -1,92 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Davide Rizzello</title>
+    <meta name="description" content="Davide Rizzello's personal website - Developer and tech enthusiast">
+    <title>Davide Rizzello | Personal Site</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --text-color: #2c3e50;
+            --bg-color: #f4f4f9;
+            --container-bg: #ffffff;
+            --card-bg: #f8f9fa;
+            --transition-speed: 0.3s;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --container-bg: #2d2d2d;
+                --card-bg: #363636;
+                --text-color: #e0e0e0;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f9;
-            color: #333;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            min-height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 2rem 1rem;
         }
 
         .container {
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
-            max-width: 600px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: var(--container-bg);
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.8s ease-out;
+            overflow: hidden;
+        }
+
+        .header {
+            padding: 2rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--primary-color);
+            padding: 3px;
+            transition: transform var(--transition-speed);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        h1, h2 {
+            color: var(--text-color);
+            font-weight: 700;
         }
 
         h1 {
             font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         p {
             font-size: 1.2rem;
-            margin-bottom: 30px;
-            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.9;
         }
 
-        .buttons a {
-            display: inline-block;
-            margin: 0 10px;
-            padding: 10px 20px;
-            font-size: 1rem;
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            font-size: 1.1rem;
             color: white;
             text-decoration: none;
             border-radius: 8px;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            font-weight: 500;
         }
 
-        .primary {
-            background-color: #3498db;
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
-        .secondary {
-            background-color: #2ecc71;
+        .button.primary {
+            background-color: var(--primary-color);
+        }
+
+        .button.secondary {
+            background-color: var(--secondary-color);
         }
 
         .social-icons {
-            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
-        .social-icons a {
-            margin: 0 10px;
+        .social-link {
+            color: var(--text-color);
             font-size: 1.5rem;
-            color: #555;
             text-decoration: none;
+            transition: transform var(--transition-speed), color var(--transition-speed);
+            padding: 0.5rem;
         }
 
-        .social-icons a:hover {
-            color: #3498db;
+        .social-link:hover {
+            transform: translateY(-3px);
+            color: var(--primary-color);
+        }
+
+        .projects-section {
+            padding: 2rem;
+            background-color: var(--card-bg);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--container-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: left;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .project-description {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            font-size: 0.875rem;
+            padding: 0.25rem 0.75rem;
+            background-color: var(--card-bg);
+            border-radius: 1rem;
+            display: inline-block;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                border-radius: 0;
+            }
+
+            .header {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            p {
+                font-size: 1.1rem;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .projects-section {
+                padding: 1.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1>Davide Rizzello</h1>
-        <p>Hi, I'm Davide! Welcome to my personal site. Here, you can learn more about my projects, work, and how to get in touch.</p>
-        <div class="buttons">
-            <a href="https://www.linkedin.com/in/daviderizzello" target="_blank" class="primary">LinkedIn</a>
-            <a href="mailto:youremail@example.com" class="secondary">Contact Me</a>
-        </div>
-        <div class="social-icons">
-            <a href="https://github.com/drizzello" target="_blank">&#x1F5A5;&#xFE0F;</a>
-            <a href="https://twitter.com/yourhandle" target="_blank">&#x1F426;</a>
-            <a href="https://instagram.com/yourhandle" target="_blank">&#x1F4F7;</a>
-        </div>
-    </div>
-</body>
+    <main class="container">
+        <header class="header">
+            <img src="/api/placeholder/150/150" alt="Davide Rizzello" class="profile-img">
+            <h1>Davide Rizzello</h1>
+            <p>Hi, I'm Davide! Welcome to my personal site. Here, you can learn more about my projects, work, and how to get in touch.</p>
+            <div class="buttons">
+                <a href="https://www.linkedin.com/in/davide-rizzello" target="_blank" rel="noopener noreferrer" class="button primary">
+                    <i class="fab fa-linkedin"></i>
+                    LinkedIn
+                </a>
+                <a href="mailto:davide.rizzello.sc@gmail.com" class="button secondary">
+                    <i class="far fa-envelope"></i>
+                    Contact Me
+                </a>
+            </div>
+            <div class="social-icons">
+                <a href="https://github.com/drizzello" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </header>
 
+        <section class="projects-section">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <!-- Example Project Card - Replace with your actual projects -->
+                <a href="#project-1" class="project-card">
+                    <h3 class="project-title">Project Name</h3>
+                    <p class="project-description">A brief description of your project and what problems it solves.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                </a>
+
+                <a href="#project-2" class="project-card">
+                    <h3 class="project-title">Another Project</h3>
+                    <p class="project-description">Description of another interesting project you've worked on.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                </a>
+
+                <a href="#project-3" class="project-card">
+                    <h3 class="project-title">Cool Project</h3>
+                    <p class="project-description">A showcase of your technical skills and problem-solving abilities.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Tailwind</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+</body>
 </html>
