@@ -64,6 +64,10 @@
             color: white;
             position: relative;
             overflow: hidden;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .header::before {
@@ -77,6 +81,14 @@
             background-size: 50px 50px;
             animation: backgroundMove 30s linear infinite;
             opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         @keyframes backgroundMove {
@@ -99,12 +111,13 @@
             width: 180px;
             height: 180px;
             border-radius: 50%;
-            margin-bottom: 1.5rem;
+            margin: 0 auto 1.5rem;
             border: 4px solid white;
             padding: 4px;
             transition: transform var(--transition-speed);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             object-fit: cover;
+            display: block;
         }
 
         .profile-img:hover {
@@ -113,20 +126,20 @@
 
         h1 {
             font-size: 3rem;
-            margin-bottom: 1rem;
+            margin: 0 auto 1rem;
             background: linear-gradient(to right, #ffffff, #e0e0e0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
         }
 
         .header p {
             font-size: 1.3rem;
-            margin-bottom: 2rem;
+            margin: 0 auto 2rem;
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
             opacity: 0.9;
+            text-align: center;
         }
 
         .buttons {
@@ -134,7 +147,8 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 2rem;
+            margin: 0 auto 2rem;
+            width: 100%;
         }
 
         .button {
@@ -164,7 +178,7 @@
             display: flex;
             justify-content: center;
             gap: 2rem;
-            margin-top: 2rem;
+            margin: 2rem auto 0;
         }
 
         .social-link {
@@ -322,33 +336,24 @@
 <body>
     <main class="container">
         <header class="header">
-            <img src="pro_pic.jpeg" alt="Davide Rizzello" class="profile-img">
-            <h1>Davide Rizzello</h1>
-            <p>Hi, I'm Davide! I'm a passionate young Data Scientist crafting digital experiences and solving real-world problems through code. Welcome to my corner of the web.</p>
-            <div class="buttons">
-                <a href="https://www.linkedin.com/in/davide-rizzello" target="_blank" rel="noopener noreferrer" class="button">
-                    <i class="fab fa-linkedin"></i>
-                    Connect on LinkedIn
-                </a>
-                <a href="mailto:davide.rizzello.sc@gmail.com" class="button">
-                    <i class="far fa-envelope"></i>
-                    Get in Touch
-                </a>
-                <a href="https://github.com/drizzello" target="_blank" rel="noopener noreferrer" class="button">
-                    <i class="fab fa-github"></i>
-                    View My Code
-                </a>
-            </div>
-            <div class="social-icons">
-                <a href="https://github.com/drizzello" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
+            <div class="header-content">
+                <img src="/api/placeholder/180/180" alt="Davide Rizzello" class="profile-img">
+                <h1>Davide Rizzello</h1>
+                <p>Hi, I'm Davide! I'm a passionate developer crafting digital experiences and solving real-world problems through code. Welcome to my corner of the web.</p>
+                <div class="buttons">
+                    <a href="https://www.linkedin.com/in/davide-rizzello" target="_blank" rel="noopener noreferrer" class="button">
+                        <i class="fab fa-linkedin"></i>
+                        Connect on LinkedIn
+                    </a>
+                    <a href="mailto:davide.rizzello.sc@gmail.com" class="button">
+                        <i class="far fa-envelope"></i>
+                        Get in Touch
+                    </a>
+                    <a href="https://github.com/drizzello" target="_blank" rel="noopener noreferrer" class="button">
+                        <i class="fab fa-github"></i>
+                        View My Code
+                    </a>
+                </div>
             </div>
         </header>
 
